@@ -1,5 +1,30 @@
 - hosts: all
   become: yes
+  
+  pre_tasks:
+    - name: update apt cache
+      ansible.builtin.apt:
+        update_cache: yes  
       
   roles:
     - role: geerlingguy.pip
+
+  tasks:      
+    - name: make .env file from template
+      ansible.builtin.template:
+        src: ./templates/redmine.env.j2
+        dest: /etc/.env
+        mode: '0600'
+  
+    - name: start redmine docker image
+      community.docker.docker_container:
+        name: devops-example-app
+        image: redmine
+        published_ports: "8080:3000"
+        restart_policy: always
+        restart: yes
+        container_default_behavior: no_defaults
+        pull: yes
+        env_file:
+          /etc/.env
+
