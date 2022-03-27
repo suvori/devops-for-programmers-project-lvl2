@@ -20,11 +20,18 @@
       community.docker.docker_container:
         name: devops-example-app
         image: redmine
-        published_ports: "8080:3000"
+        published_ports: "{{ app_port }}:3000"
         restart_policy: always
         restart: yes
         container_default_behavior: no_defaults
         pull: yes
         env_file:
           /etc/.env
+
+- hosts: webservers
+  gather_facts: yes
+  become: yes
+  
+  roles:
+    - name: datadog.datadog
 
