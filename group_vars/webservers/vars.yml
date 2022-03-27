@@ -1,21 +1,5 @@
-app_port: "8080"
-
 db_host: rc1c-iurndd3nmp5hpdg1.mdb.yandexcloud.net
 db_port: 6432
 db_user: user1
 db_name: redmine_db
 db_password: "{{ vault_db_password }}"
-
-pip_install_packages:
-  - name: docker
-  
-datadog_api_key: "{{ vault_datadog_api_key }}"
-datadog_site: "datadoghq.com"
-datadog_checks:
-  http_check:
-    init_config:
-    instances:
-      - name: Application health check status
-        url: "http://localhost:{{ app_port }}"
-        timeout: 5
-        method: GET
