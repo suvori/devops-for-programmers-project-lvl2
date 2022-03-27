@@ -27,4 +27,3 @@ $ make encrypt
 $ make decrypt
 
 ```
-
