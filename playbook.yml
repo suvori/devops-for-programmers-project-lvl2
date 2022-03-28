@@ -4,12 +4,12 @@
   pre_tasks:
     - name: update apt cache
       ansible.builtin.apt:
-        update_cache: true  
+        update_cache: true
 
   roles:
     - role: geerlingguy.pip
 
-  tasks:      
+  tasks:
     - name: make .env file from template
       ansible.builtin.template:
         src: ./templates/redmine.env.j2
@@ -33,4 +33,3 @@
 
   roles:
     - name: datadog.datadog
-
