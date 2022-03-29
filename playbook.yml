@@ -19,7 +19,7 @@
     - name: start redmine docker image
       community.docker.docker_container:
         name: devops-example-app
-        image: redmine
+        image: redmine:{{ redmine_version }}
         published_ports: "{{ redmine_app_port }}:3000"
         restart_policy: always
         restart: true
