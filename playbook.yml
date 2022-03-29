@@ -11,7 +11,7 @@
 
   tasks:
     - name: ensure env file directory exists
-      ansible.builtin.file: 
+      ansible.builtin.file:
         path: "{{ redmine_env_dir }}"
         state: directory
 

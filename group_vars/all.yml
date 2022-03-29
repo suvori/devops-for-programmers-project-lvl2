@@ -4,6 +4,7 @@ redmine_env_dir: "/etc/redmine"
 
 pip_install_packages:
   - name: docker
+    version: 5.0.3
   
 datadog_api_key: "{{ vault_datadog_api_key }}"
 datadog_site: "datadoghq.com"
