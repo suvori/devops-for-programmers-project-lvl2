@@ -1,4 +1,4 @@
-app_port: "8080"
+redmine_app_port: "8080"
 
 pip_install_packages:
   - name: docker
@@ -10,6 +10,6 @@ datadog_checks:
     init_config:
     instances:
       - name: Application health check status
-        url: "http://localhost:{{ app_port }}"
+        url: "http://localhost:{{ redmine_app_port }}"
         timeout: 5
         method: GET

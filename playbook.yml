@@ -20,7 +20,7 @@
       community.docker.docker_container:
         name: devops-example-app
         image: redmine
-        published_ports: "{{ app_port }}:3000"
+        published_ports: "{{ redmine_app_port }}:3000"
         restart_policy: always
         restart: true
         container_default_behavior: no_defaults
