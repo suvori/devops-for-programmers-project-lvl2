@@ -10,10 +10,15 @@
     - role: geerlingguy.pip
 
   tasks:
+    - name: ensure env file directory exists
+      ansible.builtin.file: 
+        path: "{{ redmine_env_dir }}"
+        state: directory
+
     - name: make .env file from template
       ansible.builtin.template:
         src: ./templates/redmine.env.j2
-        dest: /etc/.env
+        dest: "{{ redmine_env_dir }}/.env"
         mode: '0600'
 
     - name: start redmine docker image
@@ -26,7 +31,7 @@
         container_default_behavior: no_defaults
         pull: true
         env_file:
-          /etc/.env
+          "{{ redmine_env_dir }}/.env"
 
 - hosts: webservers
   become: true

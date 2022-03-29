@@ -1,5 +1,6 @@
 redmine_app_port: "8080"
 redmine_version: "5.0.0"
+redmine_env_dir: "/etc/redmine"
 
 pip_install_packages:
   - name: docker
